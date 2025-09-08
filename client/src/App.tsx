@@ -14,7 +14,7 @@ const checkServer =async ()=>{
 
   return (
     <>
-    <div>Yogin</div>
+    <div className='text-3xl font-bold text-blue-600' >Yogin</div>
 
     </>
   )
