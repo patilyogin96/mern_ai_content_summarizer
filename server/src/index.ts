@@ -22,12 +22,16 @@ app.use(cors());
 //   credentials: true // if using cookies / auth headers
 // }));
 
-app.use('/api/users', usersRouter);
 
 const PORT = 3000;
 
 // Middleware
 app.use(express.json());
+console.log("Incoming");
+
+
+app.use('/api/users', usersRouter);
+
 
 // Routes
 app.get("/health", (req: Request, res: Response) => {

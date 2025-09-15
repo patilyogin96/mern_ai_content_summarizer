@@ -2,16 +2,18 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { createUser, fetchUsers } from './libs/api';
+import UserForm from './components/UserForm';
+import UserTable from './components/UserTable';
 
 function App() {
 
-  // const checkServer = async () => {
-  //   const data = await fetch(`${import.meta.env.VITE_SERVER_BASE_URL}/health`)
-  //   console.log("data", data);
+  const checkServer = async () => {
+    const data = await fetch(`${import.meta.env.VITE_SERVER_BASE_URL}/health`)
+    console.log("data", data);
 
-  // }
+  }
   useEffect(() => { }, [])
-  // checkServer()
+  checkServer()
 
   const [users, setUsers] = useState<any[]>([]);
 
@@ -19,7 +21,7 @@ function App() {
   const load = async () => {
     try {
       const res = await fetchUsers();
-      setUsers(res.data);
+      setUsers(res.data as any);
     } catch (err) {
       console.error(err);
     }
@@ -42,8 +44,8 @@ function App() {
     <>
     <div className='p-4'>
         <h1>MERN TS - Users</h1>
-        {/* <UserForm onCreate={handleCreate} />
-        <UserTable users={users} /> */}
+        <UserForm onCreate={handleCreate} />
+        <UserTable users={users} />
       </div>
     </>
   )

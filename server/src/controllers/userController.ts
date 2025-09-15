@@ -16,6 +16,8 @@ return res.status(400).json({ error: err.message });
 
 export const listUsers = async (_req: Request, res: Response): Promise<Response> => {
 try {
+    console.log("ListRequest->");
+    
 const users = await User.find().sort({ createdAt: -1 });
 return res.json(users);
 } catch (err: any) {
