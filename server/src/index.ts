@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
 import connectDB from "./config/db";
-
+import usersRouter from "./routes/userRoutes"
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -21,6 +21,8 @@ app.use(cors());
 //   allowedHeaders: ["Content-Type", "Authorization"],
 //   credentials: true // if using cookies / auth headers
 // }));
+
+app.use('/api/users', usersRouter);
 
 const PORT = 3000;
 
