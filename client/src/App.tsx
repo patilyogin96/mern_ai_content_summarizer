@@ -40,12 +40,11 @@ function App() {
 
   return (
     <>
-      <div className='p-4'>
+    <div className='p-4'>
         <h1>MERN TS - Users</h1>
         {/* <UserForm onCreate={handleCreate} />
         <UserTable users={users} /> */}
       </div>
-
     </>
   )
 }
