@@ -1,9 +1,13 @@
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import './App.css'
-import { createUser, fetchUsers } from './libs/api';
-import UserForm from './components/UserForm';
-import UserTable from './components/UserTable';
+import {  fetchUsers } from './libs/api';
+
+
+import Navbar from './components/core/Navbar';
+import LeftSection from './components/core/LeftSection';
+import RightSection from './components/core/RightSection';
+import Footer from './components/core/Footer';
 
 function App() {
 
@@ -15,13 +19,11 @@ function App() {
   useEffect(() => { }, [])
   checkServer()
 
-  const [users, setUsers] = useState<any[]>([]);
 
 
   const load = async () => {
     try {
       const res = await fetchUsers();
-      setUsers(res.data as any);
     } catch (err) {
       console.error(err);
     }
@@ -31,21 +33,22 @@ function App() {
   useEffect(() => { load(); }, []);
 
 
-  const handleCreate = async (payload: any) => {
-    try {
-      await createUser(payload);
-      await load();
-    } catch (err) {
-      console.error(err);
-    }
-  }
 
   return (
     <>
-    <div className='p-4'>
-        <h1>MERN TS - Users</h1>
-        <UserForm onCreate={handleCreate} />
-        <UserTable users={users} />
+    <div className='min-h-screen bg-gray-50 p-6'>
+        <header>
+        <Navbar/>
+        </header>
+        <main  className="max-w-6xl mx-auto grid grid-cols-12 gap-6 " >
+          {/* Left Section */}
+          <LeftSection/>
+
+          {/* Right Section */}
+          <RightSection/>
+        </main>
+
+       <Footer/>
       </div>
     </>
   )

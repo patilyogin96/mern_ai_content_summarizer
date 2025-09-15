@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button } from './ui/button';
 
 
 export default function UserForm({ onCreate }: { onCreate: (d: any) => Promise<void> }) {
@@ -21,7 +22,8 @@ export default function UserForm({ onCreate }: { onCreate: (d: any) => Promise<v
             <input placeholder="Last Name" value={lastName} onChange={e => setLastName(e.target.value)} required />
             <input type='number' placeholder="Age" value={age} onChange={e => setAge(Number(e.target.value))} />
             <input placeholder="City" value={city} onChange={e => setCity(e.target.value)} />
-            <button type="submit">Add</button>
+            {/* <button type="submit">Add</button> */}
+            <Button>Add User</Button>
         </form>
     )
 }
